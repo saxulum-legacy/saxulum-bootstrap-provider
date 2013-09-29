@@ -1,0 +1,22 @@
+{
+    "name": "saxulum/saxulum-bootstrap-provider",
+    "description": "A bootstrap provider",
+    "keywords": ["silex", "bootstrap"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dominik Zogg",
+            "email": "dominik.zogg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "silex/silex": "~1.0",
+        "braincrafted/bootstrap-bundle": "~2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Saxulum\\SaxulumBootstrapProvider": "src"
+        }
+    }
+}
