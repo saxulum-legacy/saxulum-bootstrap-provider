@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=5.3",
-        "silex/silex": "~1.0",
-        "braincrafted/bootstrap-bundle": "dev-develop@dev"
+        "braincrafted/bootstrap-bundle": "v1.5",
+        "saxulum/saxulum-framework": "dev-master@dev"
     },
     "autoload": {
         "psr-0": {
