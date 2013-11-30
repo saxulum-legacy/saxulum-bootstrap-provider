@@ -18,7 +18,7 @@ class SaxulumBootstrapProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        $app['bootstrap.template_dir'] = '../vendor/braincrafted/bootstrap-bundle/Bc/Bundle/BootstrapBundle/Resources/views';
+        $app['bootstrap.template_dir'] = __DIR__ . '/../../../../../braincrafted/bootstrap-bundle/Bc/Bundle/BootstrapBundle/Resources/views';
 
         $app['form.type.extensions'] = $app->share($app->extend('form.type.extensions', function ($extensions) use ($app) {
             $extensions[] = new TypeSetterExtension();
