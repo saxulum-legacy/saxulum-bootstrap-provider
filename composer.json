@@ -1,6 +1,6 @@
 {
     "name": "saxulum/saxulum-bootstrap-provider",
-    "description": "A bootstrap provider",
+    "description": "A twitter bootstrap provider",
     "keywords": ["silex", "bootstrap"],
     "license": "MIT",
     "authors": [
@@ -12,7 +12,8 @@
     "require": {
         "php": ">=5.3",
         "braincrafted/bootstrap-bundle": "v1.5",
-        "saxulum/saxulum-framework": "dev-master@dev"
+        "silex/silex": "~1.1",
+        "symfony/form": "~2.3"
     },
     "autoload": {
         "psr-0": {

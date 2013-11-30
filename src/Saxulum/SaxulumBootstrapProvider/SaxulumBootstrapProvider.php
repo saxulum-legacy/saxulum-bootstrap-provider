@@ -13,8 +13,13 @@ use Symfony\Component\Finder\Finder;
 
 class SaxulumBootstrapProvider implements ServiceProviderInterface
 {
+    /**
+     * @param Application $app
+     */
     public function register(Application $app)
     {
+        $app['bootstrap.template_dir'] = '../vendor/braincrafted/bootstrap-bundle/Bc/Bundle/BootstrapBundle/Resources/views';
+
         $app['form.type.extensions'] = $app->share($app->extend('form.type.extensions', function ($extensions) use ($app) {
             $extensions[] = new TypeSetterExtension();
 
@@ -35,45 +40,17 @@ class SaxulumBootstrapProvider implements ServiceProviderInterface
             return $twig;
         }));
 
-        $this->addBraincraftedBootstrapBundleTwigTemplates($app);
+        $this->addTemplates($app);
     }
 
-    protected function addBraincraftedBootstrapBundleTwigTemplates(Application $app)
+    /**
+     * @param Application $app
+     */
+    protected function addTemplates(Application $app)
     {
-        $vendorPath = '/vendor/braincrafted/bootstrap-bundle/Bc/Bundle/BootstrapBundle';
-        $twigNamespace = 'BraincraftedBootstrapBundle';
-
-        $app['saxulum.twig.templates'] = $app->share($app->extend('saxulum.twig.templates', function (array $templates) use ($app, $vendorPath) {
-
-            $path = $app['root_dir']. $vendorPath;
-            $twigNamespace = 'BraincraftedBootstrapBundle';
-            $cacheDir = $app['cache_dir'] . '/saxulum.bootstrap';
-            if (!is_dir($cacheDir)) {
-                mkdir($cacheDir, 0777, true);
-            }
-            $twigMapDump= $cacheDir . '/braincrafted-bootstrap.twig.map.php';
-            if ($app['debug'] || !is_file($twigMapDump)) {
-                $twigMap = array();
-                if (is_dir($path . '/Resources/views')) {
-                    foreach (Finder::create()->files()->name('*.twig')->in($path . '/Resources/views') as $file) {
-                        /** @var \SplFileInfo $file */
-                        $twigMap[] = '@' . $twigNamespace . str_replace($path . '/Resources/views', '', $file->getPathname());
-                    }
-                }
-                file_put_contents($twigMapDump, '<?php return ' . var_export($twigMap, true) . ';');
-            }
-            $twigMap = require($twigMapDump);
-
-            foreach ($twigMap as $template) {
-                $templates[] = $template;
-            }
-
-            return $templates;
-        }));
-
         $app['twig.loader.filesystem'] = $app->share($app->extend('twig.loader.filesystem',
-            function(\Twig_Loader_Filesystem $twigLoaderFilesystem) use ($app, $vendorPath, $twigNamespace) {
-                $twigLoaderFilesystem->addPath($app['root_dir'] . $vendorPath. '/Resources/views', $twigNamespace);
+            function(\Twig_Loader_Filesystem $twigLoaderFilesystem) use ($app) {
+                $twigLoaderFilesystem->addPath($app['bootstrap.template_dir'], 'BraincraftedBootstrapBundle');
 
                 return $twigLoaderFilesystem;
             }
