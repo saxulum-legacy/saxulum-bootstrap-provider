@@ -9,7 +9,6 @@ use Bc\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension;
 use Saxulum\SaxulumBootstrapProvider\Form\Extension\BootstrapExtension;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use Symfony\Component\Finder\Finder;
 
 class SaxulumBootstrapProvider implements ServiceProviderInterface
 {
@@ -32,7 +31,7 @@ class SaxulumBootstrapProvider implements ServiceProviderInterface
             return $extensions;
         }));
 
-        $app['twig'] = $app->share($app->extend('twig', function(\Twig_Environment $twig) {
+        $app['twig'] = $app->share($app->extend('twig', function (\Twig_Environment $twig) {
             $twig->addExtension(new BootstrapBadgeExtension());
             $twig->addExtension(new BootstrapIconExtension());
             $twig->addExtension(new BootstrapLabelExtension());
@@ -49,7 +48,7 @@ class SaxulumBootstrapProvider implements ServiceProviderInterface
     protected function addTemplates(Application $app)
     {
         $app['twig.loader.filesystem'] = $app->share($app->extend('twig.loader.filesystem',
-            function(\Twig_Loader_Filesystem $twigLoaderFilesystem) use ($app) {
+            function (\Twig_Loader_Filesystem $twigLoaderFilesystem) use ($app) {
                 $twigLoaderFilesystem->addPath($app['bootstrap.template_dir'], 'BraincraftedBootstrapBundle');
 
                 return $twigLoaderFilesystem;
