@@ -93,7 +93,7 @@
         <div {{ block('widget_container_attributes') }}>
             <ul class="bc-collection list-unstyled">
                 {% for field in form %}
-                    <li>
+                    <li data-collection-element="{{ field.vars.id }}">
                         <div class="row">
                             <div class="col-xs-{{ form.vars.sub_widget_col }}">
                                 {{ form_widget(field) }}
