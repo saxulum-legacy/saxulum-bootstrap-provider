@@ -14,7 +14,7 @@ Requirements
 ------------
 
  * PHP 5.3+
- * Pimple ~1.1
+ * Pimple >=2.1,<4
  * Symfony/Form ~2.3
  * Twig ~1.2
 
