@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Braincrafted\Bundle\BootstrapBundle\Tests\Type;
+namespace Saxulum\Tests\SaxulumBootstrapProvider\Form\Type;
 
 use Saxulum\SaxulumBootstrapProvider\Form\Type\FormActionsType;
 use Mockery as m;

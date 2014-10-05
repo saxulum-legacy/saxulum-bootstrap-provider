@@ -1,7 +1,6 @@
 <?php
 
-
-namespace Braincrafted\Bundle\BootstrapBundle\Tests\Form\Extension;
+namespace Saxulum\Tests\SaxulumBootstrapProvider\Form\Extension;
 
 use \Mockery as m;
 use Saxulum\SaxulumBootstrapProvider\Form\Extension\InputGroupButtonExtension;
