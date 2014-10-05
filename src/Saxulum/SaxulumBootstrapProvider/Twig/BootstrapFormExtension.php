@@ -6,20 +6,17 @@
 
 namespace Saxulum\SaxulumBootstrapProvider\Twig;
 
-use Twig_Extension;
-use Twig_SimpleFunction;
-
 /**
  * BootstrapFormExtension
  *
- * @package BraincraftedBootstrapBundle
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Twig
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
-class BootstrapFormExtension extends Twig_Extension
+class BootstrapFormExtension extends \Twig_Extension
 {
     /** @var string */
     private $style;
@@ -42,29 +39,33 @@ class BootstrapFormExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction('bootstrap_set_style', array($this, 'setStyle')),
-            new Twig_SimpleFunction('bootstrap_get_style', array($this, 'getStyle')),
-            new Twig_SimpleFunction('bootstrap_set_col_size', array($this, 'setColSize')),
-            new Twig_SimpleFunction('bootstrap_get_col_size', array($this, 'getColSize')),
-            new Twig_SimpleFunction('bootstrap_set_widget_col', array($this, 'setWidgetCol')),
-            new Twig_SimpleFunction('bootstrap_get_widget_col', array($this, 'getWidgetCol')),
-            new Twig_SimpleFunction('bootstrap_set_label_col', array($this, 'setLabelCol')),
-            new Twig_SimpleFunction('bootstrap_get_label_col', array($this, 'getLabelCol')),
-            new Twig_SimpleFunction('bootstrap_set_simple_col', array($this, 'setSimpleCol')),
-            new Twig_SimpleFunction('bootstrap_get_simple_col', array($this, 'getSimpleCol')),
-
-            new Twig_SimpleFunction('checkbox_row', null, array(
-                'node_class' => 'Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode',
-                'is_safe' => array('html')
-            )),
-            new Twig_SimpleFunction('radio_row', null, array(
-                'node_class' => 'Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode',
-                'is_safe' => array('html')
-            )),
-            new Twig_SimpleFunction('global_form_errors', null, array(
-                'node_class' => 'Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode',
-                'is_safe' => array('html')
-            )),
+            new \Twig_SimpleFunction('bootstrap_set_style', array($this, 'setStyle')),
+            new \Twig_SimpleFunction('bootstrap_get_style', array($this, 'getStyle')),
+            new \Twig_SimpleFunction('bootstrap_set_col_size', array($this, 'setColSize')),
+            new \Twig_SimpleFunction('bootstrap_get_col_size', array($this, 'getColSize')),
+            new \Twig_SimpleFunction('bootstrap_set_widget_col', array($this, 'setWidgetCol')),
+            new \Twig_SimpleFunction('bootstrap_get_widget_col', array($this, 'getWidgetCol')),
+            new \Twig_SimpleFunction('bootstrap_set_label_col', array($this, 'setLabelCol')),
+            new \Twig_SimpleFunction('bootstrap_get_label_col', array($this, 'getLabelCol')),
+            new \Twig_SimpleFunction('bootstrap_set_simple_col', array($this, 'setSimpleCol')),
+            new \Twig_SimpleFunction('bootstrap_get_simple_col', array($this, 'getSimpleCol')),
+            'checkbox_row'  => new \Twig_Function_Node(
+                'Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode',
+                array('is_safe' => array('html'))
+            ),
+            'radio_row'  => new \Twig_Function_Node(
+                'Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode',
+                array('is_safe' => array('html'))
+            ),
+            'global_form_errors'  => new \Twig_Function_Node(
+                'Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode',
+                array('is_safe' => array('html'))
+            ),
+            'form_control_static'   => new \Twig_Function_Method(
+                $this,
+                'formControlStaticFunction',
+                array('is_safe' => array('html'))
+            )
         );
     }
 
@@ -174,5 +175,13 @@ class BootstrapFormExtension extends Twig_Extension
     public function getSimpleCol()
     {
         return $this->simpleCol;
+    }
+
+    public function formControlStaticFunction($label, $value)
+    {
+        return  sprintf(
+            '<div class="form-group"><label class="col-sm-%s control-label">%s</label><div class="col-sm-%s"><p class="form-control-static">%s</p></div></div>',
+            $this->getLabelCol(), $label, $this->getWidgetCol(), $value
+        );
     }
 }

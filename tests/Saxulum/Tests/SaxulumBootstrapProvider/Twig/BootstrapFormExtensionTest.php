@@ -17,14 +17,14 @@ use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension;
  * version of PHP. And I know exactly that I will commit short array syntax all the time and break
  * compatibility with PHP 5.3
  *
- * @category Test
- * @package BraincraftedBootstrapBundle
+ * @category   Test
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Twig
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
- * @group unit
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @group      unit
  */
 class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,16 +40,16 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getFunctions()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getFunctions()
      */
     public function testGetFunctions()
     {
-        $this->assertCount(13, $this->extension->getFunctions());
+        $this->assertCount(14, $this->extension->getFunctions());
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setStyle()
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getStyle()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setStyle()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getStyle()
      */
     public function testSetStyleGetStyle()
     {
@@ -58,8 +58,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setColSize()
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getColSize()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setColSize()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getColSize()
      */
     public function testSetColSizeGetColSize()
     {
@@ -68,8 +68,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setWidgetCol()
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getWidgetCol()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setWidgetCol()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getWidgetCol()
      */
     public function testSetWidgetColGetWidgetCol()
     {
@@ -78,8 +78,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setLabelCol()
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getLabelCol()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setLabelCol()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getLabelCol()
      */
     public function testSetLabelColGetLabelCol()
     {
@@ -88,8 +88,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setSimpleCol()
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getSimpleCol()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setSimpleCol()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getSimpleCol()
      */
     public function testSetSimpleColGetSimpleCol()
     {
@@ -98,7 +98,7 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getName()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getName()
      */
     public function testGetName()
     {

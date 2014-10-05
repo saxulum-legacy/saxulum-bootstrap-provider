@@ -3,6 +3,9 @@
 namespace Saxulum\SaxulumBootstrapProvider\Provider;
 
 use Saxulum\SaxulumBootstrapProvider\Form\Extension\BootstrapExtension;
+use Saxulum\SaxulumBootstrapProvider\Form\Extension\ButtonTypeExtension;
+use Saxulum\SaxulumBootstrapProvider\Form\Extension\InputGroupButtonExtension;
+use Saxulum\SaxulumBootstrapProvider\Form\Extension\StaticControlExtension;
 use Saxulum\SaxulumBootstrapProvider\Form\Extension\TypeSetterExtension;
 use Saxulum\SaxulumBootstrapProvider\Session\FlashMessage;
 use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension;
@@ -16,12 +19,17 @@ class SaxulumBootstrapProvider
     public function register(\Pimple $container)
     {
         $container['bootstrap.template_dir'] = __DIR__ . '/../Resources/views';
+        $container['bootstrap.icon_prefix'] = 'glyphicon';
+        $container['bootstrap.icon_tag'] = 'span';
 
         $container['bootstrap.flash'] = $container->share(function () use ($container) {
             return new FlashMessage($container['session']);
         });
 
         $container['form.type.extensions'] = $container->share($container->extend('form.type.extensions', function ($extensions) use ($container) {
+            $extensions[] = new ButtonTypeExtension();
+            $extensions[] = new InputGroupButtonExtension();
+            $extensions[] = new StaticControlExtension();
             $extensions[] = new TypeSetterExtension();
 
             return $extensions;
@@ -33,11 +41,14 @@ class SaxulumBootstrapProvider
             return $extensions;
         }));
 
-        $container['twig'] = $container->share($container->extend('twig', function (\Twig_Environment $twig) {
+        $container['twig'] = $container->share($container->extend('twig', function (\Twig_Environment $twig) use ($container) {
+            $twig->addExtension(new BootstrapIconExtension(
+                $container['bootstrap.icon_prefix'],
+                $container['bootstrap.icon_tag'])
+            );
+            $twig->addExtension(new BootstrapLabelExtension());
             $twig->addExtension(new BootstrapBadgeExtension());
             $twig->addExtension(new BootstrapFormExtension());
-            $twig->addExtension(new BootstrapIconExtension());
-            $twig->addExtension(new BootstrapLabelExtension());
 
             return $twig;
         }));

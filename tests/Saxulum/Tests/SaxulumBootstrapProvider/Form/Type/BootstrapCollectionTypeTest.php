@@ -22,7 +22,7 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::buildView()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::buildView()
      */
     public function testBuildView()
     {
@@ -39,18 +39,18 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
         $form->shouldReceive('getConfig')->andReturn($config);
 
         $this->type->buildView($view, $form, array(
-            'allow_add' => true,
-            'allow_delete' => false,
-            'add_button_text' => 'Add',
-            'delete_button_text' => 'Delete',
-            'sub_widget_col' => 2,
-            'button_col' => 2,
-            'prototype_name' => '___name___'
+            'allow_add'             => true,
+            'allow_delete'          => false,
+            'add_button_text'       => 'Add',
+            'delete_button_text'    => 'Delete',
+            'sub_widget_col'        => 2,
+            'button_col'            => 2,
+            'prototype_name'        => '___name___'
         ));
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::setDefaultOptions()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::setDefaultOptions()
      */
     public function testSetDefaultOptions()
     {
@@ -62,7 +62,7 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::getParent()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::getParent()
      */
     public function testGetParent()
     {
@@ -70,7 +70,7 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::getName()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::getName()
      */
     public function testGetName()
     {

@@ -22,7 +22,7 @@ class TypeSetterExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Extension\TypeSetterExtension::buildView()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Extension\TypeSetterExtension::buildView()
      */
     public function testBuildView()
     {
@@ -38,7 +38,7 @@ class TypeSetterExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Extension\TypeSetterExtension::getExtendedType()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Extension\TypeSetterExtension::getExtendedType()
      */
     public function testGetExtendedType()
     {

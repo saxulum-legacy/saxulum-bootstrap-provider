@@ -17,14 +17,14 @@ use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension;
  * version of PHP. And I know exactly that I will commit short array syntax all the time and break
  * compatibility with PHP 5.3
  *
- * @category Test
- * @package BraincraftedBootstrapBundle
+ * @category   Test
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Twig
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
- * @group unit
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @group      unit
  */
 class BootstrapBadgeExtensionTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,7 +40,7 @@ class BootstrapBadgeExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension::getFunctions()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension::getFunctions()
      */
     public function testGetFunctions()
     {
@@ -48,7 +48,7 @@ class BootstrapBadgeExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension::badgeFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension::badgeFunction
      */
     public function testBadgeFunction()
     {
@@ -60,7 +60,7 @@ class BootstrapBadgeExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension::getName()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension::getName()
      */
     public function testGetName()
     {

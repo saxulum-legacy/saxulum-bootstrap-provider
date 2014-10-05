@@ -15,12 +15,12 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * BootstrapCollectionType
  *
- * @package BraincraftedBootstrapBundle
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Form
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
 class BootstrapCollectionType extends AbstractType
 {
@@ -32,13 +32,13 @@ class BootstrapCollectionType extends AbstractType
         $view->vars = array_replace(
             $view->vars,
             array(
-                'allow_add' => $options['allow_add'],
-                'allow_delete' => $options['allow_delete'],
-                'add_button_text' => $options['add_button_text'],
+                'allow_add'          => $options['allow_add'],
+                'allow_delete'       => $options['allow_delete'],
+                'add_button_text'    => $options['add_button_text'],
                 'delete_button_text' => $options['delete_button_text'],
-                'sub_widget_col' => $options['sub_widget_col'],
-                'button_col' => $options['button_col'],
-                'prototype_name' => $options['prototype_name']
+                'sub_widget_col'     => $options['sub_widget_col'],
+                'button_col'         => $options['button_col'],
+                'prototype_name'     => $options['prototype_name']
             )
         );
 
@@ -65,16 +65,16 @@ class BootstrapCollectionType extends AbstractType
         };
 
         $resolver->setDefaults(array(
-            'allow_add' => false,
-            'allow_delete' => false,
-            'prototype' => true,
-            'prototype_name' => '__name__',
-            'type' => 'text',
-            'add_button_text' => 'Add',
+            'allow_add'          => false,
+            'allow_delete'       => false,
+            'prototype'          => true,
+            'prototype_name'     => '__name__',
+            'type'               => 'text',
+            'add_button_text'    => 'Add',
             'delete_button_text' => 'Delete',
-            'sub_widget_col' => 10,
-            'button_col' => 2,
-            'options' => array(),
+            'sub_widget_col'     => 10,
+            'button_col'         => 2,
+            'options'            => array(),
         ));
 
         $resolver->setNormalizers(array('options' => $optionsNormalizer));

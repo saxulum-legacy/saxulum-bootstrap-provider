@@ -13,12 +13,12 @@ use Symfony\Component\Form\FormView;
 /**
  * MoneyType
  *
- * @package BraincraftedBootstrapBundle
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Form
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
 class MoneyType extends BaseMoneyType
 {

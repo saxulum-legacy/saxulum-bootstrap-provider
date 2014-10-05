@@ -17,14 +17,14 @@ use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension;
  * version of PHP. And I know exactly that I will commit short array syntax all the time and break
  * compatibility with PHP 5.3
  *
- * @category Test
- * @package BraincraftedBootstrapBundle
+ * @category   Test
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Twig
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
- * @group unit
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @group      unit
  */
 class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,7 +40,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::getFunctions()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::getFunctions()
      */
     public function testGetFunctions()
     {
@@ -48,7 +48,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelFunction
      */
     public function testLabelFunction()
     {
@@ -65,7 +65,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelSuccessFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelSuccessFunction
      */
     public function testLabelSuccessFunction()
     {
@@ -76,7 +76,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelWarningFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelWarningFunction
      */
     public function testLabelWarningFunction()
     {
@@ -87,7 +87,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelDangerFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelDangerFunction
      */
     public function testLabelDangerFunction()
     {
@@ -98,7 +98,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelInfoFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelInfoFunction
      */
     public function testLabelInfoFunction()
     {
@@ -109,7 +109,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelPrimaryFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelPrimaryFunction
      */
     public function testLabelPrimaryFunction()
     {
@@ -120,7 +120,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::getName()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::getName()
      */
     public function testGetName()
     {

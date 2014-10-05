@@ -17,73 +17,78 @@ use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension;
  * version of PHP. And I know exactly that I will commit short array syntax all the time and break
  * compatibility with PHP 5.3
  *
- * @category Test
- * @package BraincraftedBootstrapBundle
+ * @category   Test
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Twig
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
- * @group unit
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @group      unit
  */
 class BootstrapIconExtensionTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var BootstrapIconExtension */
-    private $extension;
-
     /**
-     * Set up
-     */
-    public function setUp()
-    {
-        $this->extension = new BootstrapIconExtension();
-    }
-
-    /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::getFilters()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::getFilters()
      */
     public function testGetFilters()
     {
-        $this->assertCount(1, $this->extension->getFilters());
+        $this->assertCount(1, $this->getIconExtension()->getFilters());
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::getFunctions()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::getFunctions()
      */
     public function testGetFunctions()
     {
-        $this->assertCount(1, $this->extension->getFunctions());
+        $this->assertCount(1, $this->getIconExtension()->getFunctions());
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::iconFunction
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::iconFunction
      */
     public function testIconFilter()
     {
         $this->assertEquals(
             '<span class="glyphicon glyphicon-heart"></span>',
-            $this->extension->iconFunction('heart'),
+            $this->getIconExtension('glyphicon')->iconFunction('heart'),
             '->iconFunction() returns the HTML code for the given icon.'
+        );
+        $this->assertEquals(
+            '<span class="fa fa-heart"></span>',
+            $this->getIconExtension('fa')->iconFunction('heart'),
+            '->iconFunction() uses the iconPrefix passed into the IconExtension constructor.'
         );
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::parseIconsFilter
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::parseIconsFilter
      */
     public function testParseIconsFilter()
     {
         $this->assertEquals(
             '<span class="glyphicon glyphicon-heart"></span> foobar',
-            $this->extension->parseIconsFilter('.icon-heart foobar'),
+            $this->getIconExtension('glyphicon')->parseIconsFilter('.icon-heart foobar'),
             '->parseIconsFilter() returns the HTML code with the replaced icons.'
+        );
+
+        $this->assertEquals(
+            '<span class="fa fa-heart"></span> foobar',
+            $this->getIconExtension('fa')->parseIconsFilter('.icon-heart foobar'),
+            '->parseIconsFilter() uses the iconPrefix passed into the IconExtension constructor.'
         );
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::getName()
+     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::getName()
      */
     public function testGetName()
     {
-        $this->assertEquals('braincrafted_bootstrap_icon', $this->extension->getName());
+        $this->assertEquals('braincrafted_bootstrap_icon', $this->getIconExtension()->getName());
+    }
+
+    private function getIconExtension($iconPrefix = null)
+    {
+        return new BootstrapIconExtension($iconPrefix);
     }
 }

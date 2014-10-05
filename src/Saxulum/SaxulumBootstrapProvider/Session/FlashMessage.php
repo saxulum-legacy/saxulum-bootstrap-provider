@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * FlashMessage
  *
- * @package BraincraftedBootstrapBundle
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Session
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
 class FlashMessage
 {
@@ -80,5 +80,15 @@ class FlashMessage
     public function success($message)
     {
         $this->session->getFlashBag()->add('success', $message);
+    }
+
+    /**
+     * Resets the flash bag.
+     *
+     *  @return void
+     */
+    public function reset()
+    {
+        $this->session->getFlashBag()->clear();
     }
 }

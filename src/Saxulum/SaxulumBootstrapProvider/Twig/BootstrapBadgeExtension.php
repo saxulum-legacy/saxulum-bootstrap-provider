@@ -8,18 +8,18 @@
 namespace Saxulum\SaxulumBootstrapProvider\Twig;
 
 use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig_Function_Method;
 
 /**
  * BootstrapLabelExtension
  *
- * @category TwigExtension
- * @package BraincraftedBootstrapBundle
+ * @category   TwigExtension
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Twig
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
 class BootstrapBadgeExtension extends Twig_Extension
 {
@@ -29,11 +29,11 @@ class BootstrapBadgeExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction(
-                'badge',
-                array($this, 'badgeFunction'),
+            'badge' => new Twig_Function_Method(
+                $this,
+                'badgeFunction',
                 array('pre_escape' => 'html', 'is_safe' => array('html'))
-            ),
+            )
         );
     }
 

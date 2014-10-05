@@ -22,7 +22,7 @@
         {% endif %}
         {% if attr.simple_col is defined and attr.simple_col is not empty %}
             {% set simple_col = attr.simple_col %}
-        {% endif %}
+        {% endif  %}
         {% if attr.col_size is defined and attr.col_size is not empty %}
             {% set col_size = attr.col_size %}
         {% endif %}
@@ -35,9 +35,8 @@
         {% endif %}
 
         {% set type = type|default('text') %}
-        {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control')|trim }) %}
 
-        {% if style == 'inline' and (attr.placeholder is not defined or attr.placeholder is empty) %}
+        {% if style == 'inline' and (attr.placeholder is not defined or attr.placeholder is empty)  and label != false %}
             {% if label is empty %}
                 {% set attr = attr|merge({ 'placeholder': name|humanize }) %}
             {% else %}
@@ -45,8 +44,13 @@
             {% endif %}
         {% endif %}
 
-        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}>
-
+        {% if static_control is defined and static_control == true %}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control-static')|trim }) %}
+            <p id="{{ id }}" {%- for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ value }}</p>
+        {%- else -%}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control')|trim }) %}
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}>
+        {%- endif %}
         {% if simple_col is defined %}
             </div>
         {% endif %}
@@ -93,7 +97,7 @@
         <div {{ block('widget_container_attributes') }}>
             <ul class="bc-collection list-unstyled">
                 {% for field in form %}
-                    <li data-collection-element="{{ field.vars.id }}">
+                    <li>
                         <div class="row">
                             <div class="col-xs-{{ form.vars.sub_widget_col }}">
                                 {{ form_widget(field) }}
@@ -121,7 +125,7 @@
 
         {% if attr.simple_col is defined and attr.simple_col is not empty %}
             {% set simple_col = attr.simple_col %}
-        {% endif %}
+        {% endif  %}
         {% if attr.col_size is defined and attr.col_size is not empty %}
             {% set col_size = attr.col_size %}
         {% endif %}
@@ -146,7 +150,7 @@
 
         {% if attr.simple_col is defined and attr.simple_col is not empty %}
             {% set simple_col = attr.simple_col %}
-        {% endif %}
+        {% endif  %}
 
         {% if attr.col_size is defined and attr.col_size is not empty %}
             {% set col_size = attr.col_size %}
@@ -156,7 +160,7 @@
             <div class="col-{{ col_size }}-{{ simple_col }}">
         {% endif %}
 
-        <input type="file" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}>
+        <input type="file" {{ block('widget_attributes') }}>
 
         {% if simple_col is defined %}
             </div>
@@ -179,9 +183,9 @@
         <div {{ block('widget_container_attributes') }}>
             {% for child in form %}
                 {% if form.multiple is defined %}
-                    {{ checkbox_row(child, { 'no_form_group': true }) }}
+                    {{ checkbox_row(child, { 'no_form_group': true, 'inline' : (attr.inline is defined and attr.inline), 'label_attr': label_attr }) }}
                 {% else %}
-                    {{ radio_row(child, { 'no_form_group': true }) }}
+                    {{ radio_row(child, { 'no_form_group': true, 'inline' : (attr.inline is defined and attr.inline), 'label_attr': label_attr  }) }}
                 {% endif %}
             {% endfor %}
         </div>
@@ -194,7 +198,7 @@
 
         <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
             {% if empty_value is not none %}
-                <option {% if required %} disabled="disabled"{% if value is empty %} selected="selected"{% endif %}{% else %} value=""{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+                <option {% if required %} disabled="disabled"{% if value is empty %} selected="selected"{% endif %}{% endif %} value="">{{ empty_value|trans({}, translation_domain) }}</option>
             {% endif %}
             {% if preferred_choices|length > 0 %}
                 {% set options = preferred_choices %}
@@ -247,31 +251,44 @@
             {% set widget_col = widget_col|default(bootstrap_get_widget_col()) %}
             {% set label_col = label_col|default(bootstrap_get_label_col()) %}
             {% set class = 'col-' ~ col_size ~ '-' ~ widget_col ~ ' col-' ~ col_size ~ '-offset-' ~ label_col %}
-            <div class="form-group row{% if not form.vars.valid %} has-error{% endif %}">
+            <div class="form-group {% if form.vars.errors|length > 0 %} has-error{% endif %}">
             <div class="{{ class }}">
         {% elseif no_form_group is not defined or no_form_group == false %}
-            <div class="form-group{% if not form.vars.valid %} has-error{% endif %}">
+            <div class="form-group{% if form.vars.errors|length > 0 %} has-error{% endif %}">
         {% endif %}
-        <div class="checkbox">
-            {% if label is not sameas(false) %}
-                {% if not compound %}
-                    {% set label_attr = label_attr|merge({'for': id}) %}
-                {% endif %}
-                {% if required %}
-                    {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-                {% endif %}
-                {% if label is empty %}
-                    {% set label = name|humanize %}
-                {% endif %}
-                <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-                {{ block('checkbox_widget') }}
-                {{ label|trans({}, translation_domain) }}
-                </label>
-            {% else %}
-                {{ block('checkbox_widget') }}
+
+        {%set checkboxdata %}
+        {% if label is not sameas(false) %}
+            {% if not compound %}
+                {% set label_attr = label_attr|merge({'for': id}) %}
             {% endif %}
-            {{ form_errors(form) }}
-        </div>
+            {% if inline is defined and inline %}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' checkbox-inline')|trim}) %}
+            {% endif %}
+            {% if required %}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+            {% endif %}
+            {% if label is empty %}
+                {% set label = name|humanize %}
+            {% endif %}
+            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{ block('checkbox_widget') }}
+            {{ label|trans({}, translation_domain)|raw -}}
+            </label>
+        {% else %}
+            {{ block('checkbox_widget') }}
+        {% endif %}
+        {{ form_errors(form) }}
+        {% endset %}
+
+        {% if inline is defined and inline %}
+            {{ checkboxdata|raw }}
+        {% else%}
+            <div class="checkbox">{{ checkboxdata|raw }}</div>
+        {% endif %}
+
+        {{ block('form_help') }}
+
         {% if align_with_widget is defined or attr.align_with_widget is defined %}
             </div>
             </div>
@@ -303,32 +320,44 @@
             {% set widget_col = widget_col|default(bootstrap_get_widget_col()) %}
             {% set label_col = label_col|default(bootstrap_get_label_col()) %}
             {% set class = ' col-'~ col_size ~ '-' ~ widget_col ~ ' col-' ~ col_size ~ '-offset-' ~ label_col %}
-            <div class="form-group row{% if not form.vars.valid %} has-error{% endif %}">
+            <div class="form-group {% if form.vars.errors|length > 0 %} has-error{% endif %}">
             <div class="{{ class }}">
         {% elseif no_form_group is not defined or no_form_group == false %}
-            <div class="form-group{% if not form.vars.valid %} has-error{% endif %}">
+            <div class="form-group{% if form.vars.errors|length > 0 %} has-error{% endif %}">
         {% endif %}
 
-        <div class="radio">
-            {% if label is not sameas(false) %}
-                {% if not compound %}
-                    {% set label_attr = label_attr|merge({'for': id}) %}
-                {% endif %}
-                {% if required %}
-                    {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-                {% endif %}
-                {% if label is empty %}
-                    {% set label = name|humanize %}
-                {% endif %}
-                <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-                {{ block('radio_widget') }}
-                {{ label|trans({}, translation_domain) }}
-                </label>
-            {% else %}
-                {{ block('radio_widget') }}
+        {%set radiodata %}
+        {% if label is not sameas(false) %}
+            {% if not compound %}
+                {% set label_attr = label_attr|merge({'for': id}) %}
             {% endif %}
-            {{ form_errors(form) }}
-        </div>
+            {% if inline is defined and inline %}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' radio-inline')|trim}) %}
+            {% endif %}
+            {% if required %}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+            {% endif %}
+            {% if label is empty %}
+                {% set label = name|humanize %}
+            {% endif %}
+            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{ block('radio_widget') }}
+            {{ label|trans({}, translation_domain)|raw -}}
+            </label>
+        {% else %}
+            {{ block('radio_widget') }}
+        {% endif %}
+        {{ form_errors(form) }}
+        {% endset %}
+
+        {% if inline is defined and inline %}
+            {{ radiodata|raw }}
+        {% else%}
+            <div class="radio">{{ radiodata|raw }}</div>
+        {% endif %}
+
+        {{ block('form_help') }}
+
         {% if align_with_widget is defined or attr.align_with_widget is defined %}
             </div>
             </div>
@@ -374,9 +403,9 @@
             {% set attr = attr|merge({ 'class': 'bootstrap-date' }) %}
             <div {{ block('widget_container_attributes') }}>
                 {{ date_pattern|replace({
-                '{{ year }}': form_widget(form.year),
+                '{{ year }}':  form_widget(form.year),
                 '{{ month }}': form_widget(form.month),
-                '{{ day }}': form_widget(form.day),
+                '{{ day }}':   form_widget(form.day),
                 })|raw }}
             </div>
         {% endif %}
@@ -473,15 +502,19 @@
 
 {% block button_widget %}
     {% spaceless %}
-        {% if label is empty %}
+        {% if label is empty and label is not sameas(false) %}
             {% set label = name|humanize %}
         {% endif %}
         {% if type is defined and type == 'submit' %}
-            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-primary')|trim }) %}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-'~button_class|default('primary'))|trim }) %}
         {% else %}
-            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-default')|trim }) %}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-'~button_class|default('default'))|trim }) %}
         {% endif %}
-        <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
+        {% if as_link is defined and as_link == true %}
+            <a {{ block('button_attributes') }}>{% if attr.icon is defined and attr.icon != '' %}{{ icon(attr.icon) }}{% endif %}{{ label|trans({}, translation_domain) }}</a>
+        {% else %}
+            <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{% if attr.icon is defined and attr.icon != '' %}{{ icon(attr.icon) }}{% endif %}{{ label|trans({}, translation_domain) }}</button>
+        {% endif %}
     {% endspaceless %}
 {% endblock button_widget %}
 
@@ -498,6 +531,17 @@
         {{ block('button_widget') }}
     {% endspaceless %}
 {% endblock reset_widget %}
+
+{% block form_actions_widget %}
+    {% for button in form.children %}
+        {{ form_widget(button) }}&nbsp; {# this needs to be here due to https://github.com/twbs/bootstrap/issues/3245 #}
+    {% endfor  %}
+{% endblock %}
+
+{% block bs_static_widget %}
+    {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control-static')|trim }) %}
+    <p id="{{ id }}" {%- for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ value }}</p>
+{% endblock %}
 
 {# Labels #}
 
@@ -539,7 +583,7 @@
             {% if label is empty %}
                 {% set label = name|humanize %}
             {% endif %}
-            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain)|raw }}</label>
         {% endif %}
     {% endspaceless %}
 {% endblock form_label %}
@@ -551,9 +595,9 @@
 {% block repeated_row %}
     {% spaceless %}
         {#
-    No need to render the errors here, as all errors are mapped
-    to the first child (see RepeatedTypeValidatorExtension).
-    #}
+        No need to render the errors here, as all errors are mapped
+        to the first child (see RepeatedTypeValidatorExtension).
+        #}
         {{ block('form_rows') }}
     {% endspaceless %}
 {% endblock repeated_row %}
@@ -568,6 +612,9 @@
         {% endif %}
         {% if attr.widget_col is defined and attr.widget_col is not empty %}
             {% set widget_col = attr.widget_col %}
+            {% if label is sameas(false) and label_col is defined %}
+                {% set widget_col = widget_col + label_col %}
+            {% endif %}
         {% endif %}
         {% if attr.col_size is defined and attr.col_size is not empty %}
             {% set col_size = attr.col_size %}
@@ -579,12 +626,7 @@
         {% set label_col = label_col|default(bootstrap_get_label_col()) %}
         {% set widget_col = widget_col|default(bootstrap_get_widget_col()) %}
 
-        {% set row_class = '' %}
-        {% if style == 'horizontal' %}
-            {% set row_class = ' row' %}
-        {% endif %}
-
-        <div class="form-group{{ row_class }}{% if not form.vars.valid %} has-error{% endif %}">
+        <div class="form-group{% if form.vars.errors|length > 0 %} has-error{% endif %}">
             {% if style == 'horizontal' %}
                 {{ form_label(form) }}
                 <div class="col-{{ col_size }}-{{ widget_col }}">
@@ -614,17 +656,23 @@
             {% set ig_size_class = '' %}
             {% if input_group.size is defined and input_group.size == 'large' %}
                 {% set ig_size_class = ' input-group-lg' %}
-            {% endif %}
+            {% endif  %}
             {% if input_group.size is defined and input_group.size == 'small' %}
                 {% set ig_size_class = ' input-group-sm' %}
-            {% endif %}
+            {% endif  %}
             <div class="input-group{{ ig_size_class }}">
                 {% if input_group.prepend is defined and input_group.prepend is not empty %}
-                    <span class="input-group-addon">{{ input_group.prepend }}</span>
+                    <span class="input-group-addon">{{ input_group.prepend|raw|parse_icons }}</span>
+                {% endif %}
+                {% if input_group.button_prepend is defined and input_group.button_prepend is not empty %}
+                    <span class="input-group-btn">{{ form_widget(input_group_button_prepend) }}</span>
                 {% endif %}
                 {{ form_widget(form) }}
+                {% if input_group.button_append is defined and input_group.button_append is not empty %}
+                    <span class="input-group-btn">{{ form_widget(input_group_button_append) }}</span>
+                {% endif %}
                 {% if input_group.append is defined and input_group.append is not empty %}
-                    <span class="input-group-addon">{{ input_group.append }}</span>
+                    <span class="input-group-addon">{{ input_group.append|raw|parse_icons }}</span>
                 {% endif %}
             </div>
         {% else %}
@@ -684,6 +732,10 @@
     {{ form_widget(form) }}
 {% endblock hidden_row %}
 
+{% block form_actions_row %}
+    {{ block('button_row')  }}
+{% endblock %}
+
 {# Misc #}
 
 {% block form %}
@@ -708,6 +760,10 @@
             {{ bootstrap_set_style(style) }}
         {% endif %}
 
+        {% if form.vars.errors|length > 0 %}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' has-global-errors')|trim }) %}
+        {% endif %}
+
         {% if col_size is defined %}
             {{ bootstrap_set_col_size(col_size) }}
         {% endif %}
@@ -728,7 +784,7 @@
             {% set attr = attr|merge({ 'role': 'form' }) %}
         {% endif %}
 
-        <form name="{{ form.vars.name }}" method="{{ form_method|lower }}" action="{{ action }}"{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if multipart %} enctype="multipart/form-data"{% endif %}>
+        <form  name="{{ form.vars.name }}" method="{{ form_method|lower }}" action="{{ action }}"{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if multipart %} enctype="multipart/form-data"{% endif %}>
         {% if form_method != method %}
             <input type="hidden" name="_method" value="{{ method }}" />
         {% endif %}
@@ -787,7 +843,7 @@
             {% endif %}
             <ul{% if not global_errors %} class="help-block"{% endif %}>
                 {% for error in errors %}
-                    <li>{{ error.message|trans(error.messageParameters, translation_domain) }}</li>
+                    <li>{{ error.message }}</li>
                 {% endfor %}
             </ul>
             {% if global_errors == true %}
@@ -843,7 +899,7 @@
 {% block widget_container_attributes %}
     {% spaceless %}
         {% if attr.style is defined and (attr.style == 'inline' or attr.style == 'horizontal') %}
-            {% set attr = attr|merge({ 'class': 'form-'~attr.style~attr.class|default('') }) %}
+            {% set attr = attr|merge({ 'class': ('form-'~attr.style~' '~attr.class|default(''))|trim }) %}
             {% set attr = attr|merge({ 'style': null }) %}
         {% endif %}
         {% if id is not empty %}id="{{ id }}" {% endif %}
@@ -851,9 +907,7 @@
     {% endspaceless %}
 {% endblock widget_container_attributes %}
 
-{% block button_attributes %}
-    {% spaceless %}
-        id="{{ id }}" name="{{ full_name }}"{% if disabled %} disabled="disabled"{% endif %}
-        {% for attrname, attrvalue in attr %}{{ attrname }}="{{ attrvalue }}" {% endfor %}
-    {% endspaceless %}
+{% block button_attributes -%}
+    id="{{ id }}" name="{{ full_name }}"{% if disabled %} disabled="disabled"{% endif %}
+    {%- for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}
 {% endblock button_attributes %}

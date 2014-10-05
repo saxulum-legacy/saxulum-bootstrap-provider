@@ -7,30 +7,42 @@
 namespace Saxulum\SaxulumBootstrapProvider\Twig;
 
 use Twig_Extension;
-use Twig_SimpleFilter;
-use Twig_SimpleFunction;
+use Twig_Filter_Method;
+use Twig_Function_Method;
 
 /**
  * BootstrapIconExtension
  *
- * @package BraincraftedBootstrapBundle
+ * @package    BraincraftedBootstrapBundle
  * @subpackage Twig
- * @author Florian Eckerstorfer <florian@eckerstorfer.co>
- * @copyright 2012-2013 Florian Eckerstorfer
- * @license http://opensource.org/licenses/MIT The MIT License
- * @link http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012-2013 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
 class BootstrapIconExtension extends Twig_Extension
 {
+    /**
+     * @var string
+     */
+    private $iconPrefix;
+    private $iconTag;
+
+    public function __construct($iconPrefix, $iconTag='span')
+    {
+        $this->iconPrefix = $iconPrefix;
+        $this->iconTag = $iconTag;
+    }
+
     /**
      * {@inheritDoc}
      */
     public function getFilters()
     {
         return array(
-            new Twig_SimpleFilter(
-                'parse_icons',
-                array($this, 'parseIconsFilter'),
+            'parse_icons' => new Twig_Filter_Method(
+                $this,
+                'parseIconsFilter',
                 array('pre_escape' => 'html', 'is_safe' => array('html'))
             )
         );
@@ -42,9 +54,9 @@ class BootstrapIconExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction(
-                'icon',
-                array($this, 'iconFunction'),
+            'icon' => new Twig_Function_Method(
+                $this,
+                'iconFunction',
                 array('pre_escape' => 'html', 'is_safe' => array('html'))
             )
         );
@@ -53,16 +65,15 @@ class BootstrapIconExtension extends Twig_Extension
     /**
      * Parses the given string and replaces all occurrences of .icon-[name] with the corresponding icon.
      *
-     * @param string $text The text to parse
+     * @param string $text  The text to parse
      *
      * @return string The HTML code with the icons
      */
     public function parseIconsFilter($text)
     {
         $that = $this;
-
         return preg_replace_callback(
-            '/\.icon-([a-z0-9-]+)/',
+            '/\.icon-([a-z0-9+-]+)/',
             function ($matches) use ($that) {
                 return $that->iconFunction($matches[1]);
             },
@@ -73,13 +84,15 @@ class BootstrapIconExtension extends Twig_Extension
     /**
      * Returns the HTML code for the given icon.
      *
-     * @param string $icon The name of the icon
+     * @param string $icon  The name of the icon
      *
      * @return string The HTML code for the icon
      */
     public function iconFunction($icon)
     {
-        return sprintf('<span class="glyphicon glyphicon-%s"></span>', $icon);
+        $icon = str_replace('+', ' '.$this->iconPrefix.'-', $icon);
+
+        return sprintf('<%1$s class="%2$s %2$s-%3$s"></%1$s>', $this->iconTag, $this->iconPrefix, $icon);
     }
 
     /**
