@@ -6,7 +6,6 @@ namespace Braincrafted\Bundle\BootstrapBundle\Tests\Type;
 use Saxulum\SaxulumBootstrapProvider\Form\Type\FormActionsType;
 use Mockery as m;
 use Symfony\Component\Form\ButtonBuilder;
-use Symfony\Component\Form\FormBuilder;
 
 /**
  * Class FormActionsTypeTest

@@ -18,7 +18,7 @@ class TypeSetterExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->extension = new TypeSetterExtension;
+        $this->extension = new TypeSetterExtension();
     }
 
     /**

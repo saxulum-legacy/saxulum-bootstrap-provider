@@ -17,7 +17,7 @@ class MoneyTypeTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->type = new MoneyType;
+        $this->type = new MoneyType();
     }
 
     /**
