@@ -12,7 +12,6 @@ use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension;
 use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension;
 use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension;
 use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension;
-use Silex\Application;
 
 class SaxulumBootstrapProvider
 {
@@ -53,14 +52,6 @@ class SaxulumBootstrapProvider
             return $twig;
         }));
 
-        $this->addTemplates($container);
-    }
-
-    /**
-     * @param Application $container
-     */
-    protected function addTemplates(Application $container)
-    {
         $container['twig.loader.filesystem'] = $container->share($container->extend('twig.loader.filesystem',
             function (\Twig_Loader_Filesystem $twigLoaderFilesystem) use ($container) {
                 $twigLoaderFilesystem->addPath($container['bootstrap.template_dir'], 'SaxulumBootstrapProvider');
