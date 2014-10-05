@@ -24,6 +24,7 @@
         "knplabs/knp-components": "~1.2,>=1.2.5",
         "knplabs/knp-menu": "~2.0",
         "silex/silex": "~1.2",
+        "saxulum/saxulum-assetic-twig-provider": "~1.3",
         "twbs/bootstrap": "~3.2"
     },
     "autoload": {
