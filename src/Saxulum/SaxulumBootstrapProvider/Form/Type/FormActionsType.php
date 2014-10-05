@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * Adds support for form actions, printing buttons in a single line, and correctly offset.
  *
- * @package Braincrafted\Bundle\BootstrapBundle\Form\Type
+ * @package Saxulum\SaxulumBootstrapProvider\Form\Type
  *
  * @author Rafael Dohms <code@doh.ms>
  */

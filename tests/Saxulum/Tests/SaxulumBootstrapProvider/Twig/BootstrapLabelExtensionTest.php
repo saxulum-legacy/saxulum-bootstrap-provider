@@ -40,7 +40,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::getFunctions()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::getFunctions()
      */
     public function testGetFunctions()
     {
@@ -48,7 +48,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelFunction
      */
     public function testLabelFunction()
     {
@@ -65,7 +65,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelSuccessFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelSuccessFunction
      */
     public function testLabelSuccessFunction()
     {
@@ -76,7 +76,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelWarningFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelWarningFunction
      */
     public function testLabelWarningFunction()
     {
@@ -87,7 +87,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelDangerFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelDangerFunction
      */
     public function testLabelDangerFunction()
     {
@@ -98,7 +98,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelInfoFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelInfoFunction
      */
     public function testLabelInfoFunction()
     {
@@ -109,7 +109,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::labelPrimaryFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::labelPrimaryFunction
      */
     public function testLabelPrimaryFunction()
     {
@@ -120,7 +120,7 @@ class BootstrapLabelExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension::getName()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapLabelExtension::getName()
      */
     public function testGetName()
     {

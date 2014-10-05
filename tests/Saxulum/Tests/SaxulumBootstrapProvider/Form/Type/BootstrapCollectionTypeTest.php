@@ -22,7 +22,7 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::buildView()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::buildView()
      */
     public function testBuildView()
     {
@@ -50,7 +50,7 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::setDefaultOptions()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::setDefaultOptions()
      */
     public function testSetDefaultOptions()
     {
@@ -62,7 +62,7 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::getParent()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::getParent()
      */
     public function testGetParent()
     {
@@ -70,7 +70,7 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType::getName()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::getName()
      */
     public function testGetName()
     {

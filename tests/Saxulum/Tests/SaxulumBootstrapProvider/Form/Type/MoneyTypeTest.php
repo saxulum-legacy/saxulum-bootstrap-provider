@@ -21,9 +21,9 @@ class MoneyTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::buildView()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::getPattern()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::parsePatternMatches()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::buildView()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::getPattern()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::parsePatternMatches()
      */
     public function testBuildViewLeftSide()
     {
@@ -34,9 +34,9 @@ class MoneyTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::buildView()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::getPattern()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::parsePatternMatches()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::buildView()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::getPattern()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::parsePatternMatches()
      */
     public function testBuildViewRightSide()
     {
@@ -50,8 +50,8 @@ class MoneyTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::buildView()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::getPattern()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::buildView()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::getPattern()
      */
     public function testGetPatternEmpty()
     {
@@ -62,7 +62,7 @@ class MoneyTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType::getName()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\MoneyType::getName()
      */
     public function testGetName()
     {

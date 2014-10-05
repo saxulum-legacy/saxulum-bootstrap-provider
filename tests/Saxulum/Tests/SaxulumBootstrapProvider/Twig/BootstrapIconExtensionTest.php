@@ -29,7 +29,7 @@ use Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension;
 class BootstrapIconExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::getFilters()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::getFilters()
      */
     public function testGetFilters()
     {
@@ -37,7 +37,7 @@ class BootstrapIconExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::getFunctions()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::getFunctions()
      */
     public function testGetFunctions()
     {
@@ -45,7 +45,7 @@ class BootstrapIconExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::iconFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::iconFunction
      */
     public function testIconFilter()
     {
@@ -62,7 +62,7 @@ class BootstrapIconExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::parseIconsFilter
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::parseIconsFilter
      */
     public function testParseIconsFilter()
     {
@@ -80,7 +80,7 @@ class BootstrapIconExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension::getName()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapIconExtension::getName()
      */
     public function testGetName()
     {

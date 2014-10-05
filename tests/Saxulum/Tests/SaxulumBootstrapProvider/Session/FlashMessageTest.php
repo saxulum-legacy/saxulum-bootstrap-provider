@@ -38,8 +38,8 @@ class FlashMessageTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the alert() method.
      *
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::__construct()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::alert()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::__construct()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::alert()
      */
     public function testAlert()
     {
@@ -54,8 +54,8 @@ class FlashMessageTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the error() method.
      *
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::__construct()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::error()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::__construct()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::error()
      */
     public function testError()
     {
@@ -70,8 +70,8 @@ class FlashMessageTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the info() method.
      *
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::__construct()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::info()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::__construct()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::info()
      */
     public function testInfo()
     {
@@ -86,8 +86,8 @@ class FlashMessageTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the success() method.
      *
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::__construct()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage::success()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::__construct()
+     * @covers Saxulum\SaxulumBootstrapProvider\Session\FlashMessage::success()
      */
     public function testSuccess()
     {
