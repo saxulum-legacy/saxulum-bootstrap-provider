@@ -64,7 +64,7 @@ class InputGroupButtonExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Extension\InputGroupBtnExtension::buildForm()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Extension\InputGroupButtonExtension::buildForm()
      * @dataProvider provideForform
      */
     public function testBuildForm($options)
@@ -120,7 +120,7 @@ class InputGroupButtonExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Extension\InputGroupBtnExtension::getExtendedType()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Extension\InputGroupButtonExtension::getExtendedType()
      */
     public function testGetExtendedType()
     {
