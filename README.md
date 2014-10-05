@@ -40,9 +40,9 @@ Configuration
 
 You don't need to change it, every value, got its default.
 
-`bootstrap.template_dir`: path to the templates
-`bootstrap.icon_prefix`: icon prefix
-`bootstrap.icon_tag`: icon tag
+ * `bootstrap.template_dir`: path to the templates
+ * `bootstrap.icon_prefix`: icon prefix
+ * `bootstrap.icon_tag`: icon tag
 
 
 License
