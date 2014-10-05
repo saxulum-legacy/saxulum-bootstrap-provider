@@ -40,7 +40,7 @@ class BootstrapBadgeExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension::getFunctions()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension::getFunctions()
      */
     public function testGetFunctions()
     {
@@ -48,7 +48,7 @@ class BootstrapBadgeExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension::badgeFunction
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension::badgeFunction
      */
     public function testBadgeFunction()
     {
@@ -60,7 +60,7 @@ class BootstrapBadgeExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension::getName()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapBadgeExtension::getName()
      */
     public function testGetName()
     {

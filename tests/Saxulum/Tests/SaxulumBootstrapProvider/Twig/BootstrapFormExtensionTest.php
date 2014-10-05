@@ -40,7 +40,7 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getFunctions()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getFunctions()
      */
     public function testGetFunctions()
     {
@@ -48,8 +48,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setStyle()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getStyle()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setStyle()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getStyle()
      */
     public function testSetStyleGetStyle()
     {
@@ -58,8 +58,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setColSize()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getColSize()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setColSize()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getColSize()
      */
     public function testSetColSizeGetColSize()
     {
@@ -68,8 +68,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setWidgetCol()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getWidgetCol()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setWidgetCol()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getWidgetCol()
      */
     public function testSetWidgetColGetWidgetCol()
     {
@@ -78,8 +78,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setLabelCol()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getLabelCol()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setLabelCol()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getLabelCol()
      */
     public function testSetLabelColGetLabelCol()
     {
@@ -88,8 +88,8 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::setSimpleCol()
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getSimpleCol()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::setSimpleCol()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getSimpleCol()
      */
     public function testSetSimpleColGetSimpleCol()
     {
@@ -98,7 +98,7 @@ class BootstrapFormExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension::getName()
+     * @covers Saxulum\SaxulumBootstrapProvider\Twig\BootstrapFormExtension::getName()
      */
     public function testGetName()
     {

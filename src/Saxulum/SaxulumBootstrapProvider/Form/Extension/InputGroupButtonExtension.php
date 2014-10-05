@@ -18,7 +18,7 @@ use Symfony\Component\Form\FormView;
  * - since at build time the form parent is unavailable, two forms with fields of the same name, with buttons attached
  * may cause conflict.
  *
- * @package Braincrafted\Bundle\BootstrapBundle\Form\Extension
+ * @package Saxulum\SaxulumBootstrapProvider\Form\Extension
  */
 class InputGroupButtonExtension extends AbstractTypeExtension
 {
