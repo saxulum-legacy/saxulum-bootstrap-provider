@@ -98,7 +98,7 @@ class FormActionsTypeTest extends \PHPUnit_Framework_TestCase
             'mapped'         => false,
         );
 
-        $resolver = m::mock('Symfony\Component\OptionsResolver\OptionsResolverInterface');
+        $resolver = m::mock('Symfony\Component\OptionsResolver\OptionsResolver');
         $resolver->shouldReceive('setDefaults')->with($defaults)->once();
 
         $this->type->setDefaultOptions($resolver);
