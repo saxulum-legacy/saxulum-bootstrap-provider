@@ -54,11 +54,11 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDefaultOptions()
     {
-        $resolver = m::mock('Symfony\Component\OptionsResolver\OptionsResolverInterface');
+        $resolver = m::mock('Symfony\Component\OptionsResolver\OptionsResolver');
         $resolver->shouldReceive('setDefaults');
-        $resolver->shouldReceive('setNormalizers');
+        $resolver->shouldReceive('setNormalizer');
 
-        $this->type->setDefaultOptions($resolver);
+        $this->type->configureOptions($resolver);
     }
 
     /**
