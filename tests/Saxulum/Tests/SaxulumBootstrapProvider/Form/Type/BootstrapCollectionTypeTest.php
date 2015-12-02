@@ -50,9 +50,9 @@ class BootstrapCollectionTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::setDefaultOptions()
+     * @covers Saxulum\SaxulumBootstrapProvider\Form\Type\BootstrapCollectionType::configureOptions()
      */
-    public function testSetDefaultOptions()
+    public function testconfigureOptions()
     {
         $resolver = m::mock('Symfony\Component\OptionsResolver\OptionsResolver');
         $resolver->shouldReceive('setDefaults');
